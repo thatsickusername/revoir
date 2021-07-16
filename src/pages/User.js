@@ -1,10 +1,10 @@
 import React,{ useEffect, useState} from 'react';
 import axios from 'axios';
-import { useHistory} from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 function User() {
 
-
+    const history = useHistory()
     const [user, setUser] = useState([])
 
 
@@ -26,25 +26,33 @@ function User() {
     },[])
     
     
-    const history = useHistory()
-    const handleClick = () => {
-        
-        console.log('handle click launced')
-        history.push('/users/user-id', { id: user.id })
-    }
+    
    
 
     const renderUsers = () => {
-        return user.map( (user) => (
+        return user.map( (user) =>(
 
-            <div className="content"> 
-                <li key={user.id}>
-                    <button onClick={handleClick()} type="link">{user.name}</button>
-                    <br/>
-                    {/* <a href={ "mailto:" + user.email } >{user.email}</a> */}
-                </li>
+            <div > 
+                <div key={user.id}>
+                <li onClick={ () => {
+                                    history.push('/users/user-id',
+
+                                    { userId: user.id,
+                                      userName: user.name,
+                                      userEmail: user.email,
+                                      userGender: user.gender,
+                                      userStatus: user.status
+                                     })
+                                }
+                            }
+                >{user.name}</li>
+                
+
+                <br/>
+                <a href={ "mailto:" + user.email } >{user.email}</a>
+                </div>
             </div>
-
+            
         ))
     }
 

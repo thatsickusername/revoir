@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route }from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route }from 'react-router-dom';
 import Navbar from './pages/Navbar';
 import User from './pages/User';
 import UserId from './pages/UserId';
@@ -12,7 +12,7 @@ function App() {
             <Router>
             <Navbar/>
             
-                <Routes>
+                <Switch>
 
                     <Route path="/users" exact>
                         <User/>
@@ -25,7 +25,7 @@ function App() {
 
                     
 
-                </Routes>
+                </Switch>
 
                 
            </Router>
