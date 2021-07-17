@@ -1,6 +1,7 @@
 import React,{ useEffect, useState} from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import '../css/User.css'
 
 function User() {
 
@@ -32,24 +33,24 @@ function User() {
     const renderUsers = () => {
         return user.map( (user) =>(
 
-            <div > 
-                <div key={user.id}>
-                <li onClick={ () => {
-                                    history.push('/users/user-id',
+            <div className="UserCard" > 
+                <div className="UserContainer" key={user.id}>
+                    <h3 className="UserName" onClick={ () => {
+                                        history.push('/users/user-id',
 
-                                    { userId: user.id,
-                                      userName: user.name,
-                                      userEmail: user.email,
-                                      userGender: user.gender,
-                                      userStatus: user.status
-                                     })
+                                        { userId: user.id,
+                                        userName: user.name,
+                                        userEmail: user.email,
+                                        userGender: user.gender,
+                                        userStatus: user.status
+                                        })
+                                    }
                                 }
-                            }
-                >{user.name}</li>
-                
+                    >{user.name}</h3>
 
-                <br/>
-                <a href={ "mailto:" + user.email } >{user.email}</a>
+                    <br/>
+
+                    <a className="UserMail" href={ "mailto:" + user.email }> <h3>{user.email} </h3></a>
                 </div>
             </div>
             
@@ -57,7 +58,7 @@ function User() {
     }
 
     return (
-        <div>
+        <div className="User">
             <br/>
             {renderUsers()}
         </div>
